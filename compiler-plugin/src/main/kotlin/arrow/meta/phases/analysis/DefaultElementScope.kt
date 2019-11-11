@@ -1,7 +1,7 @@
 package arrow.meta.phases.analysis
 
 import arrow.meta.quotes.ClassScope
-import arrow.meta.quotes.FuncScope
+import arrow.meta.quotes.NamedFunctionScope
 import arrow.meta.quotes.Scope
 import org.jetbrains.kotlin.com.intellij.openapi.project.Project
 import org.jetbrains.kotlin.com.intellij.psi.PsiComment
@@ -210,8 +210,8 @@ class DefaultElementScope(project: Project) : ElementScope {
   override val String.identifier: PsiElement
     get() = delegate.createIdentifier(trimMargin())
 
-  override val String.function: FuncScope
-    get() = FuncScope(delegate.createFunction(trimMargin()))
+  override val String.function: NamedFunctionScope
+    get() = NamedFunctionScope(delegate.createFunction(trimMargin()))
 
   override val String.callableReferenceExpression: Scope<KtCallableReferenceExpression>
     get() = Scope(delegate.createCallableReferenceExpression(trimMargin()))
