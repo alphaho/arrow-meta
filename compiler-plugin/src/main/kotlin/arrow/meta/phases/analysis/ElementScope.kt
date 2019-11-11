@@ -2,6 +2,7 @@ package arrow.meta.phases.analysis
 
 import arrow.meta.quotes.ClassScope
 import arrow.meta.quotes.FuncScope
+import arrow.meta.quotes.NullableTypeScope
 import arrow.meta.quotes.Scope
 import org.jetbrains.kotlin.com.intellij.openapi.project.Project
 import org.jetbrains.kotlin.com.intellij.psi.PsiComment
@@ -89,6 +90,8 @@ interface ElementScope {
   val KtTypeElement.type: Scope<KtTypeReference>
   
   val String.typeOrNull: Scope<KtTypeReference>
+
+  val String.nullableType: NullableTypeScope
   
   val KtTypeReference.functionTypeReceiver: Scope<KtFunctionTypeReceiver>
   
